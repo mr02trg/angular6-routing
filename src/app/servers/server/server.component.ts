@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ServersService } from '../servers.service';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -14,7 +14,8 @@ export class ServerComponent implements OnInit, OnDestroy {
   paramSubcription : Subscription;
 
   constructor(private serversService: ServersService,
-              private currPath : ActivatedRoute) { }
+              private currPath : ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
     // Activated Route will return a string --> need to convert to number 
@@ -32,6 +33,10 @@ export class ServerComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.paramSubcription.unsubscribe();
+  }
+
+  onEdit() {
+    this.router.navigate(['/servers', this.server.id, 'edit'], {queryParamsHandling: 'preserve'});
   }
 
 }
