@@ -19,9 +19,11 @@ export class AuthService {
 
     login () {
         this.isLogin = true; 
+        console.log("Welcome wanderers ..."); 
     }
 
     logout() {
         this.isLogin = false; 
+        console.log("GTFO >.<!!");
     }
 }
