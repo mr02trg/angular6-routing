@@ -13,6 +13,7 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AppRoutingModule } from './app-routing.module';
 
 
 const routes: Routes = [
@@ -43,7 +44,8 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule, 
+    AppRoutingModule
   ],
   providers: [ServersService],
   bootstrap: [AppComponent]
