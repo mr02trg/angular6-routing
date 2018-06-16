@@ -43,7 +43,7 @@ export class AuthGuardService implements CanActivate, CanActivateChild {
         return this.authService.isAuthenticated()
             .then ( (isAuthenticated) => {
                 if (isAuthenticated) {
-                    console.log("isAuth", isAuthenticated);
+                    //console.log("isAuth", isAuthenticated);
                     return true; 
                 } else {
                     this.router.navigate(['/']);

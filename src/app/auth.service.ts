@@ -12,7 +12,7 @@ export class AuthService {
 
                 setTimeout(() => {
                     resolve(this.isLogin);      // pass back this.isLogin after 3s 
-                }, 3000);
+                }, 1000);
             }
         );
     }

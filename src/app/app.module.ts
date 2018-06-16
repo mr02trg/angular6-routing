@@ -16,6 +16,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
+import { EditServerDeactivateGuardService} from './servers/edit-server/edit-server-deactivate-guard.service';
 
 
 const routes: Routes = [
@@ -49,7 +50,7 @@ const routes: Routes = [
     HttpModule, 
     AppRoutingModule
   ],
-  providers: [ServersService, AuthGuardService, AuthService],
+  providers: [ServersService, AuthGuardService, AuthService, EditServerDeactivateGuardService], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
