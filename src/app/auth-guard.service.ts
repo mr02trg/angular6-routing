@@ -1,4 +1,4 @@
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from "@angular/router";
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, CanActivateChild } from "@angular/router";
 import { Observable } from "rxjs/Observable";
 import { AuthService } from "./auth.service";
 import { Injectable } from "@angular/core";
@@ -8,7 +8,7 @@ import { Injectable } from "@angular/core";
 // this logic will get call before the component is loaded by angular given a route 
 
 @Injectable()
-export class AuthGuardService implements CanActivate {
+export class AuthGuardService implements CanActivate, CanActivateChild {
 
     /**
      *
@@ -34,4 +34,22 @@ export class AuthGuardService implements CanActivate {
                 }
             });
     }
+
+    canActivateChild (
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot
+    ) : Observable<boolean> | Promise<boolean> | boolean {
+
+        return this.authService.isAuthenticated()
+            .then ( (isAuthenticated) => {
+                if (isAuthenticated) {
+                    console.log("isAuth", isAuthenticated);
+                    return true; 
+                } else {
+                    this.router.navigate(['/']);
+                    return false;
+                }
+            });
+    }
+
 }

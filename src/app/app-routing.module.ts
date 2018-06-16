@@ -18,10 +18,16 @@ const routes: Routes = [
       {path: ':userId/:userName', component: UserComponent},
     ]},
     
-    {path: 'servers', canActivate: [AuthGuardService] ,component: ServersComponent, children: [
-      {path: ':sId', component: ServerComponent},
-      {path: ':sId/edit', component: EditServerComponent},
-    ]}, 
+    {   path: 'servers', 
+        //canActivate: [AuthGuardService] ,
+        canActivateChild: [AuthGuardService],
+        component: ServersComponent, 
+        children: [
+            {path: ':sId', component: ServerComponent},
+            {path: ':sId/edit', component: EditServerComponent},
+        ]
+    }, 
+
     { path: 'not-found', component: NotFoundComponent},
     { path: '**', redirectTo: 'not-found'}
   ];
