@@ -43,8 +43,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
-    RouterModule.forRoot(routes),
+    HttpModule
   ],
   providers: [ServersService],
   bootstrap: [AppComponent]
