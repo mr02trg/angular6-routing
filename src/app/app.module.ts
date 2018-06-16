@@ -19,6 +19,7 @@ const routes: Routes = [
   {path: 'users', component: UsersComponent},
   {path: 'users/:userId/:userName', component: UserComponent},
   {path: 'servers', component: ServersComponent},
+  {path: 'servers/:sId', component: ServerComponent},
   {path: 'servers/:sId/edit', component: EditServerComponent},
 ];
 

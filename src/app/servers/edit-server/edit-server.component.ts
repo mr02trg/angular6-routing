@@ -20,8 +20,8 @@ export class EditServerComponent implements OnInit {
     this.server = this.serversService.getServer(1);
     this.serverName = this.server.name;
     this.serverStatus = this.server.status;
-    console.log("QueryParams:", this.currPath.snapshot.queryParams);
-    console.log("Fragment", this.currPath.fragment);
+    //console.log("QueryParams:", this.currPath.snapshot.queryParams);
+    //console.log("Fragment", this.currPath.fragment);
 
   }
 

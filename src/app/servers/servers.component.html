@@ -2,9 +2,9 @@
   <div class="col-xs-12 col-sm-4">
     <div class="list-group">
       <a
-        [routerLink] = "['/servers', server.id, 'edit']"
-        [queryParams] = "{allowEdit : 1}"
-        fragment = "loading"
+        [routerLink] = "['/servers', server.id]"
+        [queryParams] = "{edit : false}"
+        fragment="loading"
         class="list-group-item"
         *ngFor="let server of servers"
         (click)="onLoadServer(server)">
