@@ -13,6 +13,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuardService } from "./auth-guard.service";
 import { EditServerDeactivateGuardService } from "./servers/edit-server/edit-server-deactivate-guard.service";
 import { ErrorPageComponent } from "./error-page/error-page.component";
+import { ServerResolverService } from "./servers/server/serverResolver.service";
 
 /*
     Routing module 
@@ -29,7 +30,7 @@ const routes: Routes = [
         canActivateChild: [AuthGuardService],
         component: ServersComponent, 
         children: [
-            {path: ':sId', component: ServerComponent},
+            {path: ':sId', component: ServerComponent, resolve: {server: ServerResolverService}},
             {path: ':sId/edit', component: EditServerComponent, canDeactivate: [EditServerDeactivateGuardService]},
         ]
     }, 

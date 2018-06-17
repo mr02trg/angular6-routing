@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ServersService } from '../servers.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Params, Router, Data } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -18,6 +18,8 @@ export class ServerComponent implements OnInit, OnDestroy {
               private router: Router) { }
 
   ngOnInit() {
+    /*
+    // GETTING DATA USING ROUTE PARAM / QUERY PARAM
     // Activated Route will return a string --> need to convert to number 
     this.server = this.serversService.getServer(+this.currPath.snapshot.params['sId']);
 
@@ -29,6 +31,14 @@ export class ServerComponent implements OnInit, OnDestroy {
           this.server = this.serversService.getServer(+params['sId']);
         }
       )
+    */ 
+
+    // GETTING DATA USING ROUTE RESOLVE
+    // Just another way of retrieving data from route using resolver 
+    // data will be loaded before angular load the component from the route path 
+    this.currPath.data.subscribe( (data: Data) => {
+      this.server = data['server'];
+    });
   }
 
   ngOnDestroy() {
