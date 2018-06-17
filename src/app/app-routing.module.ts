@@ -12,6 +12,11 @@ import { ServersService } from './servers/servers.service';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthGuardService } from "./auth-guard.service";
 import { EditServerDeactivateGuardService } from "./servers/edit-server/edit-server-deactivate-guard.service";
+import { ErrorPageComponent } from "./error-page/error-page.component";
+
+/*
+    Routing module 
+*/
 
 const routes: Routes = [
     {path: '', component: HomeComponent},
@@ -29,8 +34,10 @@ const routes: Routes = [
         ]
     }, 
 
-    { path: 'not-found', component: NotFoundComponent},
-    { path: '**', redirectTo: 'not-found'}
+    // { path: 'not-found', component: NotFoundComponent},
+    { path: 'error-page', component: ErrorPageComponent, data: {err: 'Page Not Found'}},
+
+    { path: '**', redirectTo: '/error-page'}
   ];
 
 @NgModule({

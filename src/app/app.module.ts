@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { Routes, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -12,26 +11,12 @@ import { UserComponent } from './users/user/user.component';
 import { EditServerComponent } from './servers/edit-server/edit-server.component';
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
-import { NotFoundComponent } from './not-found/not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthGuardService } from './auth-guard.service';
 import { AuthService } from './auth.service';
 import { EditServerDeactivateGuardService} from './servers/edit-server/edit-server-deactivate-guard.service';
-
-
-const routes: Routes = [
-  {path: '', component: HomeComponent},
-  {path: 'users', component: UsersComponent, children: [
-    {path: ':userId/:userName', component: UserComponent},
-  ]},
-  
-  {path: 'servers', component: ServersComponent, children: [
-    {path: ':sId', component: ServerComponent},
-    {path: ':sId/edit', component: EditServerComponent},
-  ]}, 
-  { path: 'not-found', component: NotFoundComponent},
-  { path: '**', redirectTo: 'not-found'}
-];
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +27,8 @@ const routes: Routes = [
     UserComponent,
     EditServerComponent,
     ServerComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
